@@ -12,10 +12,9 @@ The goal of this project is to create a an exmaple application using the latest 
 Zype has a very robust and full features API. This allow the clients to use any or all parts of the Zype platform they want while leaving the flexibility to continue to use their own custom system or 3rd parties to perform desired functions.
 
 ####Functionality
-1. Responsive homepage and about page with customizable copy.
-2. A paywall that requires the consumer to login in order to see content on the video pages. This page will also have a registration link for new users.
-3. A videos index page that shows thumbnails and titles of the availble videos with some basic navigation such as categories, channels and/or search. 
-4. A video details page that shows some of the video meta-data and a player to view the video. Videos that require a subscription will be not play but rather directed the consumer to purchase page if they do not have a subscription.
+1. Responsive videos homepage and about page with customizable copy.
+2. A paywall that requires the consumer to login in order to see content on the video details pages. This page will also have a registration link for new users.
+3. A video details page that shows some of the video meta-data and a player to view the video. Videos that require a subscription will be not play but rather directed the consumer to purchase page if they do not have a subscription.
 
 ####Zype API
 1. Zype-cli: This is a gem that wraps the Zype restful API using httparty as the client. 
@@ -112,12 +111,7 @@ end
 `rails s`
 12. Setup the fae-cms super-user in the browser. Fae-cms has a first time init user page.
 `http://localhost:3000/admin`
-
-![Fae startup page](http://www.precidix.com/blogs/Fae-first-time-login.png)
-
-###Next we customize for our requirements
-
-This site will have two static pages, home and about. It will also have dynamic content for the job experience shown on the home page. Fae-cms supports a special controller and models for static pages. Like most CMS's, fae-cms stores content for it's static pages in generic content tables. It also supports regular models for storing any relational data that can be injected into your static pages. For both types of models, static page and ActiveRecord, fae-cms generates the admin pages for you. 
+`user: Daniel Brandt, dbbrandt@gmail.com:password`
 
 ####We will begin with the About Us page
 
