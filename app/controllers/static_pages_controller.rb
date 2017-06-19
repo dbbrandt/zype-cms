@@ -9,11 +9,10 @@ class StaticPagesController < ApplicationController
     @video_id = params[:id]
     @item = DetailPage.instance rescue nil
     if @video_id == "1"
-      @video_image = 'sarcastic-eddie-murphy.jpg'
+      @video = {subscription: true, image: 'sarcastic-eddie-murphy.jpg', title: "Eddie Murphy: Ha Ha Ha Very Funny", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta rhoncus quam, nec sollicitudin lectus gravida in. Maecenas congue nunc eget augue lobortis viverra. Mauris."}
     else
-      @video_image = 'visions.jpg'
+      @video = {subscription: false, image: 'visions.jpg', title: "Ahh, so nice to get for free...", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta rhoncus quam, nec sollicitudin lectus gravida in. Maecenas congue nunc eget augue lobortis viverra. Mauris."}
     end
-    @video = nil
   end
 
   def page

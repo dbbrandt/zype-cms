@@ -1,49 +1,56 @@
 .row
   .columns.small-8.small-offset-2.column-2
-    h6.thumbnail-heading Title
+    h6.thumbnail-heading #{@video[:title]}
 .row
   header.columns.small-12.hero-column
     .responsive-picture.hero-image
-      - if @video_image
+      - if @video[:subscription]
         picture
-          img alt="Placeholder Picture" srcset="#{asset_path(@video_image)}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          img alt="#{@video[:title]}" srcset="#{asset_path(@video[:image])}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      - else
+        picture
+          img alt="#{"Subscription Required"}" srcset="#{asset_path(@video[:image])}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
 
 main.row
   .columns.small-12.book-column
-    p.paragraph.action-paragraph Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta rhoncus quam, nec sollicitudin lectus gravida in. Maecenas congue nunc eget augue lobortis viverra. Mauris.
-    a.link-button.action-button href="#" Subscribe
+    p.paragraph.action-paragraph #{@video[:description]}
 
-.row
-  .columns.small-12.large-12.large-offset-0
-    h6.heading-1
-      span.heading-text-3 Get Access Now
+- if @video[:subscription]
+  .row
+    .columns.small-12.book-column
+      a.link-button.action-button href="#" Subscribe
 
-.row.row-1
-  .columns.small-12.custom-400-small-2
-  .columns.small-12.custom-400-small-4.custom-400-small-offset-2.large-offset-2
-    p.paragraph.paragraph-1
-      span.paragraph-text-1 Subscribe &amp; watch everything
-    h6.heading-2 $10/month
-  
-  .columns.small-12.custom-400-small-4
-    p.paragraph.paragraph-1 Get 48-hour access to paid content
-    h6.heading-2 $1.90/day pass
-  
-  .columns.small-2.custom-400-small-offset-0.custom-400-small-2
+  .row
+    .columns.small-12.large-12.large-offset-0
+      h6.heading-1
+        span.heading-text-3 Get Access Now
 
-.row.row-2
-  .columns.small-12.custom-400-small-3.medium-2.large-2.large-offset-1.column-3
-    p.paragraph.paragraph-3
-      span.paragraph-text-2 Already have access?
-    p.paragraph.paragraph-2 Sign In Now
-  
-  .columns.small-12.medium-4.custom-400-small-3.large-3.column-4
-    input value="" name="email" type="text" class="input-1"
-  
-  .columns.small-12.medium-4.custom-400-small-3.large-3.column-5
-    input value="" name="email" type="text" class="input-2"
-  
-  .columns.small-4.custom-400-small-3.small-offset-4.custom-400-small-offset-0.medium-2.large-offset-0.column-6
-    button type="button" class="button" Sign In »
-  
-  .columns.small-2
+  .row.row-1
+    .columns.small-12.custom-400-small-2
+    .columns.small-12.custom-400-small-4.custom-400-small-offset-2.large-offset-2
+      p.paragraph.paragraph-1
+        span.paragraph-text-1 Subscribe &amp; watch everything
+      h6.heading-2 $10/month
+
+    .columns.small-12.custom-400-small-4
+      p.paragraph.paragraph-1 Get 48-hour access to paid content
+      h6.heading-2 $1.90/day pass
+
+    .columns.small-2.custom-400-small-offset-0.custom-400-small-2
+
+  .row.row-2
+    .columns.small-12.custom-400-small-3.medium-2.large-2.large-offset-1.column-3
+      p.paragraph.paragraph-3
+        span.paragraph-text-2 Already have access?
+      p.paragraph.paragraph-2 Sign In Now
+
+    .columns.small-12.medium-4.custom-400-small-3.large-3.column-4
+      input value="" name="email" type="text" class="input-1"
+
+    .columns.small-12.medium-4.custom-400-small-3.large-3.column-5
+      input value="" name="email" type="text" class="input-2"
+
+    .columns.small-4.custom-400-small-3.small-offset-4.custom-400-small-offset-0.medium-2.large-offset-0.column-6
+      button type="button" class="button" Sign In »
+
+    .columns.small-2
