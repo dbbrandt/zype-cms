@@ -4,8 +4,9 @@
 .row
   header.columns.small-12.hero-column
     .responsive-picture.hero-image
-      picture
-        img alt="Placeholder Picture" srcset="#{asset_path('visions.jpg')}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      - if @video_image
+        picture
+          img alt="Placeholder Picture" srcset="#{asset_path(@video_image)}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
 
 main.row
   .columns.small-12.book-column
