@@ -57,6 +57,10 @@ The most important controller for this implementation will be the video controll
 ####Fae CMS
 The Fae CMS provides the framework for any administration, user setup and static page content management. In addition to an admin namespace where all the admin models and controllers are placed, we add a static_pages_controller to manage the static  pages and navigation for the Zype-cms.
 
+####Tools
+1. This app uses Slim templating in palce of the default Erb.
+2. For testing, Rspec is used along with factory-girl, faker and database_cleaner to make it easy!
+3. Capistrano is added and configured for deploying. 
 
 ####What you need to get started
 
@@ -72,16 +76,31 @@ The Fae CMS provides the framework for any administration, user setup and static
 2. Add the *fae-rails* gem to the Gemfile   
 `# The Rails CMS`  
 `gem 'fae-rails'`
-4. Add the slim gem to generate slim rather than erb views. [Slim](http://www.rubydoc.info/gems/slim/frames) is an alternative to HAML with a slightly different syntax. Since FAE uses slim, it mades sense to use it for the other pages. It's efficient and to HAML.   
-`# Use SLIM for HTML`   
+4. Add the *slim* gem to generate slim rather than erb views. `# Use SLIM for HTML`   
 `gem 'slim-rails', '~> 3.1'`
-5. Install a gem, `redcarpet`, to allow us to use markdown in our text field content. Fae-cms provides a markdown editor out of the box.   
+5. Add *redcarpet*, to allow us to use markdown in our text field content. Fae-cms provides a markdown editor out of the box.   
 `# Used to render markup text fields as HTML`
 `gem 'redcarpet', '~> 3.4'`
-6. Run bundler   
-`bundle install`
+6. Add *capistrano* for deploying to a server.
+`group :development do`
+`# deploying`
+  `gem 'capistrano', '~> 3.6'`
+  `gem 'capistrano-rails', '~> 1.1'`
+  `gem 'capistrano-rvm'`
+  `gem 'capistrano3-puma'`
+  `gem 'capistrano3-nginx'`
+  `gem 'capistrano-upload-config'`
+7. Add *rspec-rails* and other testing gems.
+`group :test do`
+  `gem 'factory_girl_rails', '~> 4.0'`
+  `gem 'shoulda-matchers', '~> 3.1'`
+  `gem 'faker'`
+  `gem 'database_cleaner'`
+end
+7. Run bundler   
+`bundle update`
 `Note I had some issues on OSX and had to install an older version of image magic to get the native builds to succeed`
-7. Initialize and generate the fae-cms code and tables.   
+8. Initialize and generate the fae-cms code and tables.   
 `rails g fae:install`   
 8. Convert the `app/views/layouts` generated as `*.html.erb` to `.html.slim`. This releates to three files: `application.html.slim, mailer.html.slim, mailer.text.slim` 
 9. Started up the server.   
