@@ -142,6 +142,21 @@ end
     `src: url('../fonts/coffeecup-font-icons.eot?#iefixcc-w484d8'`  
     `becomes: `   
     `src: asset_url('coffeecup-font-icons.eot?#iefixcc-w484d8')`
+
+#### Complete basic navigation and screens
+Complete basic navigation and flow for subscriptions
+   * Home page 
+   * Detail Page
+   * Subscription logic
+
+#### Integrate zype-cli
+1. Install zype-cli version forked to dbbrandt, branch 'app-cli' which adds some functionality to support an app_key in addition to an api_key.   
+2. Add zype.rb to initializers to setup zype configuration.
+3. Set the app_key in the environment.
+`export ZYPE_APP_KEY=XWny5j0V89yb1uZu6SI_D95EADV5FzBYldE9Ny0_q0GOzcWLiruPyhN-f2Pcyohf`
+4. While testing change to the zype-cli branch without version changes you need to do `bundle update zype` to get the latest changes from the repo.
+   
+
     
 
 ####Generate the Fae static pages

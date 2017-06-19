@@ -419,67 +419,62 @@ button.button:hover {
 }
 
 @media screen and (min-width: 40rem) {
-  /* Text Elements */
+    /* Text Elements */
+    p.paragraph span.paragraph-text-1 {
+        font-size: 1.25rem;
+    }
 
-  p.paragraph span.paragraph-text-1 {
-    font-size: 1.25rem;
-  }
+    p.paragraph.paragraph-1 {
+        font-size: 22px;
+    }
 
-  p.paragraph.paragraph-1 {
-    font-size: 22px;
-  }
+    /* Interaction Elements */
+    a.link-button.nav {
+        font-size: 1.5rem;
+    }
 
-  /* Interaction Elements */
+    /* Layout Elements */
+    @media screen and (min-width: 64rem) {
+        /* Text Elements */
+        h4.sub-title {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 2.25rem;
+        }
 
-  a.link-button.nav {
-    font-size: 1.5rem;
-  }
+        p.paragraph.action-paragraph {
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 50rem;
+        }
 
-  /* Layout Elements */
+        /* Interaction Elements */
+        a.link-button.action-button {
+            border-radius: 4px;
+        }
 
-@media screen and (min-width: 64rem) {
-  /* Text Elements */
+        /* Layout Elements */
+        body > .row.row-2 {
+            background-color: #f7fcff;
+        }
 
-  h4.sub-title {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 2.25rem;
-  }
+        body > .row > [class*='small-'].column-3 {
+            margin-top: 0;
+            padding-top: 7px;
+            padding-bottom: 8px;
+            background-color: #f05e0e;
+        }
 
-  p.paragraph.action-paragraph {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 50rem;
-  }
+        body > .row > [class*='small-'].column-4 {
+            background-color: #f05e0e;
+        }
 
-  /* Interaction Elements */
+        body > .row > [class*='small-'].column-5 {
+            background-color: #f05e0e;
+        }
 
-  a.link-button.action-button {
-    border-radius: 4px;
-  }
-
-  /* Layout Elements */
-
-  body > .row.row-2 {
-    background-color: #f7fcff;
-  }
-
-  body > .row > [class*='small-'].column-3 {
-    margin-top: 0;
-    padding-top: 7px;
-    padding-bottom: 8px;
-    background-color: #f05e0e;
-  }
-
-  body > .row > [class*='small-'].column-4 {
-    background-color: #f05e0e;
-  }
-
-  body > .row > [class*='small-'].column-5 {
-    background-color: #f05e0e;
-  }
-
-  body > .row > [class*='small-'].column-6 {
-    background-color: #f05e0e;
-  }
+        body > .row > [class*='small-'].column-6 {
+            background-color: #f05e0e;
+        }
+    }
 }

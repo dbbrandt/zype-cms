@@ -41,13 +41,12 @@ gem 'jbuilder', '~> 2.5'
 # The Rails CMS
 gem 'fae-rails', '~> 1.5.1'
 
+gem 'zype', :git => 'https://github.com/dbbrandt/zype-cli.git', :branch => 'app-cli'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-group :development, :test do
+group :development, :test do                       
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'pry'
+  gem 'pry-byebug'
   gem 'rspec-rails', '~> 3.5'
 end
 
