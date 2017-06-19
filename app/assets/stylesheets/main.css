@@ -29,13 +29,18 @@ h4.sub-title {
   line-height: 1.2;
 }
 
-h6.travel-heading {
+h6.thumbnail-heading {
   color: #18191a;
   text-align: center;
   font-style: normal;
   font-size: 1.5rem;
   font-family: 'Mouse Memoirs', cursive;
   line-height: 1.2;
+  margin: 10px;
+}
+
+.thumbnail-video {
+  margin-bottom: 40px;
 }
 
 h6.heading-1 {
@@ -431,11 +436,6 @@ button.button:hover {
   }
 
   /* Layout Elements */
-
-  body > .row > [class*='small-'].column-1 {
-    min-height: 12.5rem;
-  }
-}
 
 @media screen and (min-width: 64rem) {
   /* Text Elements */

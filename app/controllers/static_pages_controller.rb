@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
   end
 
   def show
+    @video_id = params[:id]
     @item = DetailPage.instance rescue nil
     @video = nil
   end

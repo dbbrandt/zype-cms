@@ -1,19 +1,48 @@
-== render 'static_pages/responsive_banner', { title: @item.title, intro: @item.intro.content }
-div class="row spotlight-row"
-  div class="columns small-12 column-2 large-12 medium-12"
-    div class="container about-container"
-      h1 class="quote"
-        font face="Roboto, sans-serif"
-          span class="heading-text-5" #{@item.headline.content}
-      div class="responsive-picture quote-picture"
-        picture
-          img title="#{@item.hero_image.alt}" alt="#{@item.hero_image.alt}" srcset="#{@item.hero_image.asset.url}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-      p class="paragraph paragraph-1"
-        br
-      ul class="unorder-list-blue" #{markdown @item.body.content}
-      div class="container container-2"
-        a href="#{@item.profile_link.content}" class="responsive-picture picture-link-1"
-          picture
-            img title="#{@item.profile_image.alt}" alt="#{@item.profile_image.alt}" srcset="#{@item.profile_image.asset.url}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+.row
+  .columns.small-8.small-offset-2.column-2
+    h6.travel-heading Title
+.row
+  header.columns.small-12.hero-column
+    .responsive-picture.hero-image
+      picture
+        img alt="Placeholder Picture" srcset="#{asset_path('visions.jpg')}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
 
-      
+main.row
+  .columns.small-12.book-column
+    p.paragraph.action-paragraph Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta rhoncus quam, nec sollicitudin lectus gravida in. Maecenas congue nunc eget augue lobortis viverra. Mauris.
+    a.link-button.action-button href="#" Subscribe
+
+.row
+  .columns.small-12.large-12.large-offset-0
+    h6.heading-1
+      span.heading-text-3 Get Access Now
+
+.row.row-1
+  .columns.small-12.custom-400-small-2
+  .columns.small-12.custom-400-small-4.custom-400-small-offset-2.large-offset-2
+    p.paragraph.paragraph-1
+      span.paragraph-text-1 Subscribe &amp; watch everything
+    h6.heading-2 $10/month
+  
+  .columns.small-12.custom-400-small-4
+    p.paragraph.paragraph-1 Get 48-hour access to paid content
+    h6.heading-2 $1.90/day pass
+  
+  .columns.small-2.custom-400-small-offset-0.custom-400-small-2
+
+.row.row-2
+  .columns.small-12.custom-400-small-3.medium-2.large-2.large-offset-1.column-3
+    p.paragraph.paragraph-3
+      span.paragraph-text-2 Already have access?
+    p.paragraph.paragraph-2 Sign In Now
+  
+  .columns.small-12.medium-4.custom-400-small-3.large-3.column-4
+    input value="" name="email" type="text" class="input-1"
+  
+  .columns.small-12.medium-4.custom-400-small-3.large-3.column-5
+    input value="" name="email" type="text" class="input-2"
+  
+  .columns.small-4.custom-400-small-3.small-offset-4.custom-400-small-offset-0.medium-2.large-offset-0.column-6
+    button type="button" class="button" Sign In »
+  
+  .columns.small-2
