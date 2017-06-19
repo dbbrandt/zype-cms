@@ -90,7 +90,10 @@ The Fae CMS provides the framework for any administration, user setup and static
   `gem 'capistrano3-puma'`
   `gem 'capistrano3-nginx'`
   `gem 'capistrano-upload-config'`
-7. Add *rspec-rails* and other testing gems.
+7. Add *rspec-rails* 
+`group :development, :test do`
+`  gem 'rspec-rails', '~> 3.5'`
+8. Add other *testing* gems
 `group :test do`
   `gem 'factory_girl_rails', '~> 4.0'`
   `gem 'shoulda-matchers', '~> 3.1'`
@@ -98,14 +101,16 @@ The Fae CMS provides the framework for any administration, user setup and static
   `gem 'database_cleaner'`
 end
 7. Run bundler   
-`bundle update`
+`bundle`
 `Note I had some issues on OSX and had to install an older version of image magic to get the native builds to succeed`
-8. Initialize and generate the fae-cms code and tables.   
+8. Initialize rspec 
+`rails g rspec:install`
+9. Initialize and generate the fae-cms code and tables.   
 `rails g fae:install`   
-8. Convert the `app/views/layouts` generated as `*.html.erb` to `.html.slim`. This releates to three files: `application.html.slim, mailer.html.slim, mailer.text.slim` 
-9. Started up the server.   
+10. Convert the `app/views/layouts` generated as `*.html.erb` to `.html.slim`. This releates to three files: `application.html.slim, mailer.html.slim, mailer.text.slim` 
+11. Started up the server.   
 `rails s`
-10. Setup the fae-cms super-user in the browser. Fae-cms has a first time init user page.
+12. Setup the fae-cms super-user in the browser. Fae-cms has a first time init user page.
 `http://localhost:3000/admin`
 
 ![Fae startup page](http://www.precidix.com/blogs/Fae-first-time-login.png)
