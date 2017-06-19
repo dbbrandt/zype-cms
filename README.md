@@ -113,10 +113,38 @@ end
 `http://localhost:3000/admin`
 `user: Daniel Brandt, dbbrandt@gmail.com:password`
 
-####We will begin with the About Us page
+####Add in the generated CofeeCup Design Assets
+1. Design the site in Responsive Site Designer by CoffeeCup
+2. Save and Export the site to the *design* folder int he project
+3. Copy the CoffeeCup font files to assets/fonts
+4. Copy the javascript files to *assets/javascript*
+   * foundation.js
+   * outofview.js
+   * picturefill.js
+   * what-input.js
+5. Copy the style sheets to *assets/stylesheets*
+   * foundation.css
+   * main.css
+   * wirefream-theme.css
+6. Create the *views/static_pages* directory and migrate the html content to slim files
+    * home.html.slim
+    * show.html.slim
+    * _feature.html.slim
+    * _video.html.slim
+7. Create the *views/shared* directory for the menu and footer partials.
+    * _menu.html.slim
+    * _footer.html.slim
+
+####Generate the Fae static pages
+Fae-cms provides the ability to create static pages for the site that allows us to store the static content in the database.
+
+1. Generate the home page
+   `rails g fae:page Home featured_video:string feature_description:string title:string body:text subscribe_link:string`
+    
+
 
 Let's generate the About Us static page. This is similar to a generating a Rails scaffold but generates the fae files for administering the page content.     
-`rails g fae:page AboutUs intro:text hero_image:image headline:string body:text profile_link:string profile_image:image`
+`rails g fae:page AboutUs intro:text hero_image:image headline:string copy:text profile_link:string profile_image:image`
 
 Output:   
 `create  app/controllers/admin/content_blocks_controller.rb`   
