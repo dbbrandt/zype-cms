@@ -4,9 +4,9 @@
     h4.sub-title
       span.heading-text-2 Today's Guffaws
 .row.traval-impressions
-    - for job in (1..10) do
+    - for video in @videos do
       == render :partial => 'static_pages/video',
-              :locals => { title: "Title", video: "#{asset_path('discover-m.jpg')}", video_id: "112312" }
+              :locals => { title: video.title, thumb: video.thumbnails[1].url, id: video._id, description: video.description }
 main.row
   .columns.small-12.book-column
       p.paragraph.action-paragraph Hilarity is a comedy video website that combines user-generated content with original, exclusive content. The site is a place where celebrities, established and up-and-coming comedians and regular users can all put up stuff they think is funny. At the same time, the site hopes to eliminate all the junk that people have to pick through to find videos.

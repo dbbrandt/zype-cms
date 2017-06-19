@@ -1,21 +1,21 @@
 .row
   .columns.small-8.small-offset-2.column-2
-    h6.thumbnail-heading #{@video[:title]}
+    h6.video-heading #{truncate(@video.title.html_safe, length: 100)}
 .row
   header.columns.small-12.hero-column
-    .responsive-picture.hero-image
-      - if @video[:subscription]
+    .responsive-picture.hero-image id="zype_#{@video._id}"
+      - if @video.subscription_required
         picture
-          img alt="#{@video[:title]}" srcset="#{asset_path(@video[:image])}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          img alt="#{@video[:title]}" srcset="#{@video.thumbnails[4].url}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
       - else
-        picture
-          img alt="#{"Subscription Required"}" srcset="#{asset_path(@video[:image])}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        video
+          script src="https://player.zype.com/embed/#{@video._id}.js?autoplay=true&access_token=#{@access_token}" type="text/javascript"
 
 main.row
   .columns.small-12.book-column
-    p.paragraph.action-paragraph #{@video[:description]}
+    p.paragraph.action-paragraph #{@video.description.html_safe}
 
-- if @video[:subscription]
+- if @video.subscription_required
   .row
     .columns.small-12.book-column
       a.link-button.action-button href="#" Subscribe

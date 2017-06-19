@@ -33,11 +33,23 @@ h6.thumbnail-heading {
   color: #18191a;
   text-align: center;
   font-style: normal;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-family: 'Mouse Memoirs', cursive;
   line-height: 1.2;
   margin: 10px;
 }
+
+h6.video-heading {
+    color: #18191a;
+    text-align: center;
+    font-style: normal;
+    font-size: 1.8rem;
+    font-family: 'Mouse Memoirs', cursive;
+    line-height: 1.2;
+    margin-top: 20px;
+}
+
+
 
 .thumbnail-video {
   margin-bottom: 40px;
@@ -56,7 +68,7 @@ p.paragraph.action-paragraph {
   max-width: 50rem;
   color: rgba(30, 30, 30, .8);
   text-align: left;
-  font-size: 1.125rem;
+  font-size: 1.3rem;
   font-family: Georgia, Times, 'Times New Roman', serif;
   line-height: 1.4;
 }
@@ -267,10 +279,17 @@ div.responsive-picture.hero-image {
   max-width: none;
 }
 
-div.responsive-picture.travel-image {
+div.responsive-picture {
   margin: .4375rem auto;
   max-width: 20.625rem;
+
 }
+
+a.thumb-image img {
+  max-height: 185px;
+}
+
+
 
 button.button {
   background-color: #f05e0e;
@@ -321,7 +340,8 @@ button.button:hover {
   p.paragraph.action-paragraph {
     margin-right: auto;
     margin-left: auto;
-    max-width: 37.5rem;
+    margin-top: 20px;
+    max-width: 95%;
   }
 
   p.paragraph.paragraph-1 {
@@ -445,7 +465,8 @@ button.button:hover {
         p.paragraph.action-paragraph {
             margin-right: auto;
             margin-left: auto;
-            max-width: 50rem;
+            margin-top: 20px;
+            max-width: 95%;
         }
 
         /* Interaction Elements */

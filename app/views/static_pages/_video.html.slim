@@ -1,6 +1,6 @@
 .columns.small-12.custom-400-small-6.medium-4.thumbnail-video
-  h6.thumbnail-heading Title
-  .responsive-picture.travel-image
+  h6.thumbnail-heading #{truncate(title.html_safe, length: 50)}
+  .responsive-picture
     picture
-      a href="video/#{video_id}"
-        img alt="#{title}" srcset="#{video}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      a.thumb-image href="video/#{id}"
+        img alt="#{title}" title="#{description}" srcset="#{thumb}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"

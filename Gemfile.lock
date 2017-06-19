@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/dbbrandt/zype-cli.git
-  revision: a96b8d1ad451356a5dd7cdae4267aca3fedbfdde
+  revision: 5c99f596977cd41ed3554e54d480a33ae411053b
   branch: app-cli
   specs:
     zype (1.0.0)

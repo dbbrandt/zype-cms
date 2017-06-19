@@ -2,17 +2,15 @@ class StaticPagesController < ApplicationController
 
   def index
     @item = HomePage.instance rescue nil
-    @videos = []
+    @videos = video.list
   end
 
   def show
-    @video_id = params[:id]
+    @video = params[:id] == "1" ? video.headline : video.find(params[:id])
+
+    @app_key = ENV["ZYPE_APP_KEY"]
+    @access_token = "b6b7084bf677ec2615644e748b052c1e77821aae6257d3cab1330cd285299a64"
     @item = DetailPage.instance rescue nil
-    if @video_id == "1"
-      @video = {subscription: true, image: 'sarcastic-eddie-murphy.jpg', title: "Eddie Murphy: Ha Ha Ha Very Funny", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta rhoncus quam, nec sollicitudin lectus gravida in. Maecenas congue nunc eget augue lobortis viverra. Mauris."}
-    else
-      @video = {subscription: false, image: 'visions.jpg', title: "Ahh, so nice to get for free...", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta rhoncus quam, nec sollicitudin lectus gravida in. Maecenas congue nunc eget augue lobortis viverra. Mauris."}
-    end
   end
 
   def page
@@ -21,5 +19,9 @@ class StaticPagesController < ApplicationController
     @item = page_name.constantize.instance rescue nil
    
     render "static_pages/#{params[:page]}"
+  end
+
+  def video
+    Video.new
   end
 end
