@@ -105,7 +105,8 @@ end
 8. Initialize rspec 
 `rails g rspec:install`
 9. Initialize and generate the fae-cms code and tables.   
-`rails g fae:install`   
+`rails g fae:install` 
+`rails fae:seed_db`  
 10. Convert the `app/views/layouts` generated as `*.html.erb` to `.html.slim`. This releates to three files: `application.html.slim, mailer.html.slim, mailer.text.slim` 
 11. Started up the server.   
 `rails s`
@@ -117,6 +118,8 @@ end
 1. Design the site in Responsive Site Designer by CoffeeCup
 2. Save and Export the site to the *design* folder int he project
 3. Copy the CoffeeCup font files to assets/fonts
+    * Add link to google fonts to the laytout/application.html.slim header    `link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Luckiest+Guy%7CMontserrat%7CMouse+Memoirs%7COxygen+Mono"`
+
 4. Copy the javascript files to *assets/javascript*
    * foundation.js
    * outofview.js
@@ -134,13 +137,33 @@ end
 7. Create the *views/shared* directory for the menu and footer partials.
     * _menu.html.slim
     * _footer.html.slim
+8. Convert the css to scss in order to add asset pipline functions.
+    * For example:
+    `src: url('../fonts/coffeecup-font-icons.eot?#iefixcc-w484d8'`  
+    `becomes: `   
+    `src: asset_url('coffeecup-font-icons.eot?#iefixcc-w484d8')`
+    
 
 ####Generate the Fae static pages
 Fae-cms provides the ability to create static pages for the site that allows us to store the static content in the database.
 
-1. Generate the home page
-   `rails g fae:page Home featured_video:string feature_description:string title:string body:text subscribe_link:string`
-    
+1. Generate the home page. This setups the fae-cms controller, model and view needed for the home page administration. 
+   `rails g fae:page Home featured_video:string feature_description:string title:string body:text subscribe_link:string` 
+    * create  app/controllers/admin/content_blocks_controller.rb
+    * create  app/models/home_page.rb
+    * create  app/views/admin/content_blocks/home.html.slim
+2. Add home to the admin menu
+    * The fae-cms admin menu is setup in a models/concerns/fae/navigation_concern.rb file
+`    def structure`  
+`      [ item('Home', path: fae.edit_content_block_path('home')) ]`  
+`    end`      
+3. Add the home page
+    * Using SQLLite I was unable to get fae-cms to add the fae_static_page row so I added it by hand and the other fae_text_fields and fae_text_areas were added fine. This was not a problem previous using Postgres.
+
+4. Add *static pages* controller to handle the home and detail pages.
+    * Handle the index action. Load the static content for the home page as well as the feature video and some subset of videos that are most popular.
+    * Handle the show action to display the video detail page. Load the static content as well as the video details for a selected video.
+    * Handle generic other static pages for future expansion.
 
 
 Let's generate the About Us static page. This is similar to a generating a Rails scaffold but generates the fae files for administering the page content.     

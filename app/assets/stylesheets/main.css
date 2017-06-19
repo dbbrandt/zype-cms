@@ -440,10 +440,6 @@ button.button:hover {
 @media screen and (min-width: 64rem) {
   /* Text Elements */
 
-  h1.page-title {
-    color: #0a0a0a;
-  }
-
   h4.sub-title {
     margin-top: 0;
     margin-bottom: 0;

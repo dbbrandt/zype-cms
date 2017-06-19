@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  root "static_pages#index"
+
+  get "/pages/:page" => "static_pages#page"
+
   namespace :admin do
   end
   # mount Fae below your admin namespec

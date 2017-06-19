@@ -25,7 +25,7 @@ module Fae
 
     def structure
       [
-        # scaffold inject marker
+          item('Home', path: fae.edit_content_block_path('home'))
       ]
     end
 

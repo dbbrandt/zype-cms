@@ -14,7 +14,7 @@
 
 .column, .columns { width: 100%; float: left; padding-right: 0.625rem; padding-left: 0.625rem; }
 @media print, screen and (min-width: 40em) { .column, .columns { padding-right: 0.9375rem; padding-left: 0.9375rem; } }
-.column:last-child:not(:first-child), .columns:last-child:not(:first-child) { float: right; }
+.column:last-child:not(:first-child), .columns:last-child:not(:first-child) { float: left; }
 .column.end:last-child:last-child, .end.columns:last-child:last-child { float: left; }
 
 .column.row.row, .row.row.columns { float: none; }
@@ -1384,8 +1384,8 @@ a.thumbnail image { -webkit-box-shadow: none; box-shadow: none; }
 /************************ Icons ******************************/
 @font-face {
   font-family: 'coffeecup-font-icons';
-  src: url('../fonts/coffeecup-font-icons.eot?cc-w484d8');
-  src: url('../fonts/coffeecup-font-icons.eot?#iefixcc-w484d8') format('embedded-opentype'), url('../fonts/coffeecup-font-icons.woff?cc-w484d8') format('woff'), url('../fonts/coffeecup-font-icons.ttf?cc-w484d8') format('truetype'), url('../fonts/coffeecup-font-icons.svg?cc-w484d8#coffeecup-font-icons') format('svg');
+  src: asset_url('coffeecup-font-icons.eot?cc-w484d8');
+  src: asset_url('coffeecup-font-icons.eot?#iefixcc-w484d8') format('embedded-opentype'), asset_url('coffeecup-font-icons.woff?cc-w484d8') format('woff'), asset_url('coffeecup-font-icons.ttf?cc-w484d8') format('truetype'), asset_url('coffeecup-font-icons.svg?cc-w484d8#coffeecup-font-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }

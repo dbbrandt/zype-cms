@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170619040224) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "fae_changes", force: :cascade do |t|
     t.integer  "changeable_id"
     t.string   "changeable_type"
@@ -20,9 +23,9 @@ ActiveRecord::Schema.define(version: 20170619040224) do
     t.text     "updated_attributes"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.index ["changeable_id"], name: "index_fae_changes_on_changeable_id"
-    t.index ["changeable_type"], name: "index_fae_changes_on_changeable_type"
-    t.index ["user_id"], name: "index_fae_changes_on_user_id"
+    t.index ["changeable_id"], name: "index_fae_changes_on_changeable_id", using: :btree
+    t.index ["changeable_type"], name: "index_fae_changes_on_changeable_type", using: :btree
+    t.index ["user_id"], name: "index_fae_changes_on_user_id", using: :btree
   end
 
   create_table "fae_files", force: :cascade do |t|
@@ -38,8 +41,8 @@ ActiveRecord::Schema.define(version: 20170619040224) do
     t.boolean  "required",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["attached_as"], name: "index_fae_files_on_attached_as"
-    t.index ["fileable_type", "fileable_id"], name: "index_fae_files_on_fileable_type_and_fileable_id"
+    t.index ["attached_as"], name: "index_fae_files_on_attached_as", using: :btree
+    t.index ["fileable_type", "fileable_id"], name: "index_fae_files_on_fileable_type_and_fileable_id", using: :btree
   end
 
   create_table "fae_images", force: :cascade do |t|
@@ -57,8 +60,8 @@ ActiveRecord::Schema.define(version: 20170619040224) do
     t.boolean  "required",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["attached_as"], name: "index_fae_images_on_attached_as"
-    t.index ["imageable_type", "imageable_id"], name: "index_fae_images_on_imageable_type_and_imageable_id"
+    t.index ["attached_as"], name: "index_fae_images_on_attached_as", using: :btree
+    t.index ["imageable_type", "imageable_id"], name: "index_fae_images_on_imageable_type_and_imageable_id", using: :btree
   end
 
   create_table "fae_options", force: :cascade do |t|
@@ -70,7 +73,7 @@ ActiveRecord::Schema.define(version: 20170619040224) do
     t.integer  "singleton_guard"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["singleton_guard"], name: "index_fae_options_on_singleton_guard", unique: true
+    t.index ["singleton_guard"], name: "index_fae_options_on_singleton_guard", unique: true, using: :btree
   end
 
   create_table "fae_roles", force: :cascade do |t|
@@ -88,7 +91,7 @@ ActiveRecord::Schema.define(version: 20170619040224) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["slug"], name: "index_fae_static_pages_on_slug"
+    t.index ["slug"], name: "index_fae_static_pages_on_slug", using: :btree
   end
 
   create_table "fae_text_areas", force: :cascade do |t|
@@ -102,12 +105,12 @@ ActiveRecord::Schema.define(version: 20170619040224) do
     t.string   "attached_as"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["attached_as"], name: "index_fae_text_areas_on_attached_as"
-    t.index ["contentable_id"], name: "index_fae_text_areas_on_contentable_id"
-    t.index ["contentable_type"], name: "index_fae_text_areas_on_contentable_type"
-    t.index ["on_prod"], name: "index_fae_text_areas_on_on_prod"
-    t.index ["on_stage"], name: "index_fae_text_areas_on_on_stage"
-    t.index ["position"], name: "index_fae_text_areas_on_position"
+    t.index ["attached_as"], name: "index_fae_text_areas_on_attached_as", using: :btree
+    t.index ["contentable_id"], name: "index_fae_text_areas_on_contentable_id", using: :btree
+    t.index ["contentable_type"], name: "index_fae_text_areas_on_contentable_type", using: :btree
+    t.index ["on_prod"], name: "index_fae_text_areas_on_on_prod", using: :btree
+    t.index ["on_stage"], name: "index_fae_text_areas_on_on_stage", using: :btree
+    t.index ["position"], name: "index_fae_text_areas_on_position", using: :btree
   end
 
   create_table "fae_text_fields", force: :cascade do |t|
@@ -121,11 +124,11 @@ ActiveRecord::Schema.define(version: 20170619040224) do
     t.boolean  "on_prod",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["attached_as"], name: "index_fae_text_fields_on_attached_as"
-    t.index ["contentable_type", "contentable_id"], name: "index_fae_text_fields_on_contentable_type_and_contentable_id"
-    t.index ["on_prod"], name: "index_fae_text_fields_on_on_prod"
-    t.index ["on_stage"], name: "index_fae_text_fields_on_on_stage"
-    t.index ["position"], name: "index_fae_text_fields_on_position"
+    t.index ["attached_as"], name: "index_fae_text_fields_on_attached_as", using: :btree
+    t.index ["contentable_type", "contentable_id"], name: "index_fae_text_fields_on_contentable_type_and_contentable_id", using: :btree
+    t.index ["on_prod"], name: "index_fae_text_fields_on_on_prod", using: :btree
+    t.index ["on_stage"], name: "index_fae_text_fields_on_on_stage", using: :btree
+    t.index ["position"], name: "index_fae_text_fields_on_position", using: :btree
   end
 
   create_table "fae_users", force: :cascade do |t|
@@ -153,11 +156,11 @@ ActiveRecord::Schema.define(version: 20170619040224) do
     t.string   "language"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["confirmation_token"], name: "index_fae_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_fae_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_fae_users_on_reset_password_token", unique: true
-    t.index ["role_id"], name: "index_fae_users_on_role_id"
-    t.index ["unlock_token"], name: "index_fae_users_on_unlock_token", unique: true
+    t.index ["confirmation_token"], name: "index_fae_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_fae_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_fae_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["role_id"], name: "index_fae_users_on_role_id", using: :btree
+    t.index ["unlock_token"], name: "index_fae_users_on_unlock_token", unique: true, using: :btree
   end
 
 end
