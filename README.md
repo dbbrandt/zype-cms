@@ -1,4 +1,4 @@
-# zype-cms
+# ZypeCMS
 Generic Zype CRM for viewing and editing a Zype cannel contents.
 
 ## Objective: Develop a Zype CMS Web App##
