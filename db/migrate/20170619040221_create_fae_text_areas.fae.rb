@@ -1,5 +1,5 @@
 # This migration comes from fae (originally 20141021183047)
-class CreateFaeTextAreas < ActiveRecord::Migration
+class CreateFaeTextAreas < ActiveRecord::Migration[5.1]
   def change
     create_table :fae_text_areas do |t|
       t.string :label
