@@ -12,9 +12,10 @@ The goal of this project is to create a an exmaple application using the latest 
 Zype has a very robust and full features API. This allow the clients to use any or all parts of the Zype platform they want while leaving the flexibility to continue to use their own custom system or 3rd parties to perform desired functions.
 
 ####Functionality
-1. Responsive videos homepage and about page with customizable copy.
-2. A paywall that requires the consumer to login in order to see content on the video details pages. This page will also have a registration link for new users.
-3. A video details page that shows some of the video meta-data and a player to view the video. Videos that require a subscription will be not play but rather directed the consumer to purchase page if they do not have a subscription.
+1. Responsive homepage and about page with customizable copy.
+2. A paywall that requires the consumer to login in order to see content on the video pages. This page will also have a registration link for new users.
+3. A videos index page that shows thumbnails and titles of the availble videos with some basic navigation such as categories, channels and/or search. 
+4. A video details page that shows some of the video meta-data and a player to view the video. Videos that require a subscription will be not play but rather directed the consumer to purchase page if they do not have a subscription.
 
 ####Zype API
 1. Zype-cli: This is a gem that wraps the Zype restful API using httparty as the client. 
