@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
-  root "static_pages#index"
+  root 'static_pages#index'
 
-  get "video/:id" => "static_pages#show"
+  get 'video/:id', to: 'static_pages#show', as: 'show'
 
-  get "/pages/:page" => "static_pages#page"
+  get '/pages/:page', to: 'static_pages#page', as: 'pages'
+
+  post "/login" => "static_pages#login"
+
+  get "/logout" => "static_pages#logout"
 
   namespace :admin do
   end

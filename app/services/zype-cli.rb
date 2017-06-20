@@ -21,6 +21,12 @@ class ZypeCli
     return nil
   end
 
+  def login(username, password)
+     result = @zype.login({username: username, password: password})
+     JSON.parse(result.body)['access_token']
+  rescue ArgumentError => e
+    puts "Zype login call exception: #{e}"
+    return nil
+  end
 end
-
 

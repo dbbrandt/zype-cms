@@ -4,7 +4,7 @@
 .row
   header.columns.small-12.hero-column
     .responsive-picture.hero-image id="zype_#{@video._id}"
-      - if @video.subscription_required
+      - if @video.subscription_required || @access_token.nil?
         picture
           img alt="#{@video[:title]}" srcset="#{@video.thumbnails[4].url}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
       - else
@@ -38,19 +38,26 @@ main.row
 
     .columns.small-2.custom-400-small-offset-0.custom-400-small-2
 
-  .row.row-2
+- if @access_token.nil?
+  = form_tag(login_path, method: :post)
+  input value="#{@video._id}" name="id" type="hidden"
+
+  .row
+    .column.small-12.large-12.large_offest-0
+      .errors #{flash[:error]}
+
+  .row.row-2.orange
     .columns.small-12.custom-400-small-3.medium-2.large-2.large-offset-1.column-3
       p.paragraph.paragraph-3
         span.paragraph-text-2 Already have access?
       p.paragraph.paragraph-2 Sign In Now
 
     .columns.small-12.medium-4.custom-400-small-3.large-3.column-4
-      input value="" name="email" type="text" class="input-1"
+      input value="email" name="email" type="text" class="input-1"
 
     .columns.small-12.medium-4.custom-400-small-3.large-3.column-5
-      input value="" name="email" type="text" class="input-2"
+      input value="" name="password" type="password" class="input-2"
 
     .columns.small-4.custom-400-small-3.small-offset-4.custom-400-small-offset-0.medium-2.large-offset-0.column-6
-      button type="button" class="button" Sign In »
+      button type="submit" class="button" Sign In »
 
-    .columns.small-2
