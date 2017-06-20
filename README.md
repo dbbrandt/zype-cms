@@ -160,14 +160,17 @@ Complete basic navigation and flow for subscriptions
 1. Install zype-cli version forked to dbbrandt, branch 'app-cli' which adds some functionality to support an app_key in addition to an api_key.   
 2. Add zype.rb to initializers to setup zype configuration.
 3. Set the app_key in the environment.
-`export ZYPE_APP_KEY=XWny5j0V89yb1uZu6SI_D95EADV5FzBYldE9Ny0_q0GOzcWLiruPyhN-f2Pcyohf`
+`export ZYPE_APP_KEY=<your app key`
 4. Create a .zype config file (YAML format) in the rails root directory.
 `---`
-`app_key:`
 `api_key:`
-`host: api.zype.com`
-`port: 443`
-`use_ssl: true`
+`app_key:`
+`client_id:` 
+`client_secret: 
+`host: api.zype.com
+`oauth_host: login.zype.com
+`port: 443
+`use_ssl: true
 5. Set the HOME environment variable to point to the rails root directory.
 `export HOME=<Rails.root> # replace Rails.root with the actual path`
 6. While testing change to the zype-cli branch without version changes you need to do `bundle update zype` to get the latest changes from the repo.
@@ -176,4 +179,36 @@ Complete basic navigation and flow for subscriptions
 9. Create the Video model which handles the video requests from the controllers.    
 
     
-
+####Setup Capistrano Deploy
+1. Run `cap install`
+2. Modify `Capfile` in the root directory
+Uncomment:  
+require 'capistrano/rvm'  
+require 'capistrano/bundler'  
+require 'capistrano/rails/migrations'  
+require 'capistrano/rails/assets’  
+Add:  
+require 'capistrano/nginx'  
+require 'capistrano/puma'  
+require 'capistrano/puma/nginx'  
+require 'capistrano/upload-config’  
+Add:  
+the following plugins to the bottom of the Capfile  
+install_plugin Capistrano::Puma  # Default puma tasks  
+workers (in cluster mode)
+install_plugin Capistrano::Puma::Jungle # if you need the jungle tasks  
+install_plugin Capistrano::Puma::Nginx  # if you want to upload a nginx site template  
+3. Modify config/deploy.rb for the app details.
+4. Generate the nginx_puma config files  
+`rails g capistrano:nginx_puma:config`    
+`Running via Spring preloader in process 36719`  
+`      create  config/deploy/templates/puma.rb.erb`  
+`      create  config/deploy/templates/nginx_conf.erb`  
+5. Create the database.production.yml, secrets.production.yml and puma.production.yml config files
+6. Create the nginx config file on the server (/etc/nginx/conf.d/zype-cms_production.conf)
+7. Check the productioncap  config
+`cap production config:check`   
+8. Update 'config/deploy/production.rb' for the server and role
+`server "www.precidix.com", user: "precidix", roles: %w{app db web}`
+`role   :app,  %w{precidix@www.precidix.com}`  
+9. Create config/database.yml.example 
