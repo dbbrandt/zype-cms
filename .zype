@@ -1,0 +1,9 @@
+---
+api_key:
+app_key:
+client_id:
+client_secret:
+host: api.zype.com
+oauth_host: login.zype.com
+port: 443
+use_ssl: true
