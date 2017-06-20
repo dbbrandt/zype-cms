@@ -108,6 +108,10 @@ a.link-text.footer-link {
 
 /* Interaction Elements */
 
+a.thumb-image img {
+    max-height: 135px;
+}
+
 a.link-button {
   font-family: 'Montserrat', sans-serif;
 }
@@ -299,10 +303,6 @@ div.responsive-picture {
 
 }
 
-a.thumb-image img {
-  max-height: 185px;
-}
-
 button.button {
   background-color: #f05e0e;
 }
@@ -483,6 +483,10 @@ button.button:hover {
         }
 
         /* Interaction Elements */
+        a.thumb-image img {
+            max-height: 185px;
+        }
+
         a.link-button.action-button {
             border-radius: 4px;
         }
