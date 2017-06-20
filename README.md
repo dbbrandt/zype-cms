@@ -1,7 +1,7 @@
 # ZypeCMS
 Generic Zype CRM for viewing and editing a Zype cannel contents.
 
-## Objective: Develop a Zype CMS Web App##
+## Objective: Develop a Zype CMS Web App
 
 ### Background
 Zype provides a platform that allows content creators to publish and monetize all of their video content using a single interface. The creator can better understand how their content is consumed in order to expand their audiences and optimize it for monitization. Zype also provides the ability to distribute their video content across their own branded video destinations on all devices and platforms.
