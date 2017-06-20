@@ -7,11 +7,9 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
-# Use postgres as the database for Active Record
-gem 'pg'
+gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -21,9 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
-# Used to render markup text fields as HTML
-gem 'redcarpet', '~> 3.4'
+# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -36,16 +32,12 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# The Rails CMS
-gem 'fae-rails', '~> 1.5.1'
+# Use Capistrano for deployment
+# gem 'capistrano-rails', group: :development
 
-gem 'zype', :git => 'https://github.com/dbbrandt/zype-cli.git', :branch => 'app-cli'
-
-group :development, :test do                       
+group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'pry'
-  gem 'pry-byebug'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'byebug', platform: :mri
 end
 
 group :development do
@@ -65,9 +57,5 @@ group :development do
   gem 'capistrano-upload-config'
 end
 
-group :test do
-  gem 'factory_girl_rails', '~> 4.0'
-  gem 'shoulda-matchers', '~> 3.1'
-  gem 'faker'
-  gem 'database_cleaner'
-end
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

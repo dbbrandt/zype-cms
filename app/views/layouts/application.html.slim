@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title ZypeCms
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track'=> 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+    = favicon_link_tag 'favicon.ico'
+    link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Luckiest+Guy%7CMontserrat%7CMouse+Memoirs%7COxygen+Mono"
+    javascript:
+      document.createElement( "picture" );
+
+  body.no-js
+    == render :partial => 'shared/menu'
+    
+    == yield
+    
+    javascript:
+      $(document).foundation()

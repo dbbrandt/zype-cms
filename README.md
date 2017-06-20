@@ -1,35 +1,36 @@
-#zipe-cms
+# ZypeCMS
+Generic Zype CRM for viewing and editing a Zype cannel contents.
 
-##Objective: Develop a Zype CMS Web App##
+## Objective: Develop a Zype CMS Web App
 
-###Background
+### Background
 Zype provides a platform that allows content creators to publish and monetize all of their video content using a single interface. The creator can better understand how their content is consumed in order to expand their audiences and optimize it for monitization. Zype also provides the ability to distribute their video content across their own branded video destinations on all devices and platforms.
 
-###Create an Example Web Channel App
+### Create an Example Web Channel App
 The goal of this project is to create a an exmaple application using the latest features and benfits Rails 5. The app will leverage an open-source version of the zype-cli to make accessing Zype API easy and extensible for special client needs. Finally to make creation and editing of the client specific look and feel, creatives, custom subscriptoin managemement and other needs easy to customize, the Fae-cms is use to make the Zype app a Zype-CMS. 
 
-###Architecture Overview
+### Architecture Overview
 Zype has a very robust and full features API. This allow the clients to use any or all parts of the Zype platform they want while leaving the flexibility to continue to use their own custom system or 3rd parties to perform desired functions.
 
-####Functionality
+#### Functionality
 1. Responsive videos homepage and about page with customizable copy.
 2. A paywall that requires the consumer to login in order to see content on the video details pages. This page will also have a registration link for new users.
 3. A video details page that shows some of the video meta-data and a player to view the video. Videos that require a subscription will be not play but rather directed the consumer to purchase page if they do not have a subscription.
 
-####Zype API
+#### Zype API
 1. Zype-cli: This is a gem that wraps the Zype restful API using httparty as the client. 
 2. The 1.0.0 version of the gem provides a decent range of the models and enpoints availble in the Zype API. 
 3. Rahter than re-invent the wheel, we fork off Zipe-cli and extend it as needed. 
 4. The Zype-cli was designed to support clients editing and accessing their content. So , the only major change required for this initial implementation of Zype-CMS is to support consumer use as well.
 
-####Service
+#### Service
 While most of the functionality we need is avilable in the Zype-cli, in order to insulate the Zype-cms from changes and provide a more customizable interface for the Zype-Cms, the cli will be wrapped in a zype service class. Needed endponts will be wrapped in easy to use methods of type zype service.
 
 1. Login
 2. Video List
 3. Video Detail
 
-####Directory Structure
+#### Directory Structure
 The main directory being used in the Rails 5 app directory include:
 
 * assets (leverages ConfeeCup and Foundataion.js)
@@ -57,25 +58,25 @@ The main directory being used in the Rails 5 app directory include:
     * These don't yet leverage the fae-cms capabilities but a little work would make the content configurable use fae admin screens. Admin is found at /admin and requires a user and password to access.
 
 
-####Controllers
+#### Controllers
 The most important controller for this implementation will be the video controller which provides both the index and show (detail) view of a video. The controller will call the Zype service and manage access and subscriptions for the views.
 
-####Fae CMS
+#### Fae CMS
 The Fae CMS provides the framework for any administration, user setup and static page content management. In addition to an admin namespace where all the admin models and controllers are placed, we add a static_pages_controller to manage the static  pages and navigation for the Zype-cms.
 
-####Tools
+#### Tools
 1. This app uses Slim templating in palce of the default Erb.
 2. For testing, Rspec is used along with factory-girl, faker and database_cleaner to make it easy!
 3. Capistrano is added and configured for deploying. 
 
-####What you need to get started
+#### What you need to get started
 
 * A Ruby development environment with Ruby version >=2.4.0
 * A database ready to migrate tables into
 * Some basic site assets (HTML and CSS) for your home and about page. We use a CoffeCup Responsive Site Deisnger to quickly create the content for the Zype-cms . 
 
 
-##How this was built
+## How this was built
 
 1. Create a new project locally   
 `rails new  zype-cms`
@@ -121,7 +122,7 @@ end
 `http://localhost:3000/admin`
 `user: Daniel Brandt, dbbrandt@gmail.com:password`
 
-####Add in the generated CofeeCup Design Assets
+#### Add in the generated CofeeCup Design Assets
 1. Design the site in Responsive Site Designer by CoffeeCup
 2. Save and Export the site to the *design* folder int he project
 3. Copy the CoffeeCup font files to assets/fonts
@@ -179,4 +180,36 @@ Complete basic navigation and flow for subscriptions
 9. Create the Video model which handles the video requests from the controllers.    
 
     
-
+#### Setup Capistrano Deploy
+1. Run `cap install`
+2. Modify `Capfile` in the root directory
+Uncomment:  
+require 'capistrano/rvm'  
+require 'capistrano/bundler'  
+require 'capistrano/rails/migrations'  
+require 'capistrano/rails/assets’  
+Add:  
+require 'capistrano/nginx'  
+require 'capistrano/puma'  
+require 'capistrano/puma/nginx'  
+require 'capistrano/upload-config’  
+Add:  
+the following plugins to the bottom of the Capfile  
+install_plugin Capistrano::Puma  # Default puma tasks  
+workers (in cluster mode)
+install_plugin Capistrano::Puma::Jungle # if you need the jungle tasks  
+install_plugin Capistrano::Puma::Nginx  # if you want to upload a nginx site template  
+3. Modify config/deploy.rb for the app details.
+4. Generate the nginx_puma config files  
+`rails g capistrano:nginx_puma:config`    
+`Running via Spring preloader in process 36719`  
+`      create  config/deploy/templates/puma.rb.erb`  
+`      create  config/deploy/templates/nginx_conf.erb`  
+5. Create the database.production.yml, secrets.production.yml and puma.production.yml config files
+6. Create the nginx config file on the server (/etc/nginx/conf.d/zype-cms_production.conf)
+7. Check the productioncap  config
+`cap production config:check`   
+8. Update 'config/deploy/production.rb' for the server and role
+`server "www.precidix.com", user: "precidix", roles: %w{app db web}`
+`role   :app,  %w{precidix@www.precidix.com}`  
+9. Create config/database.yml.example and config/database.yml.production.example 
