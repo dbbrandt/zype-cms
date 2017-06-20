@@ -12,10 +12,9 @@ The goal of this project is to create a an exmaple application using the latest 
 Zype has a very robust and full features API. This allow the clients to use any or all parts of the Zype platform they want while leaving the flexibility to continue to use their own custom system or 3rd parties to perform desired functions.
 
 ####Functionality
-1. Responsive homepage and about page with customizable copy.
-2. A paywall that requires the consumer to login in order to see content on the video pages. This page will also have a registration link for new users.
-3. A videos index page that shows thumbnails and titles of the availble videos with some basic navigation such as categories, channels and/or search. 
-4. A video details page that shows some of the video meta-data and a player to view the video. Videos that require a subscription will be not play but rather directed the consumer to purchase page if they do not have a subscription.
+1. Responsive videos homepage and about page with customizable copy.
+2. A paywall that requires the consumer to login in order to see content on the video details pages. This page will also have a registration link for new users.
+3. A video details page that shows some of the video meta-data and a player to view the video. Videos that require a subscription will be not play but rather directed the consumer to purchase page if they do not have a subscription.
 
 ####Zype API
 1. Zype-cli: This is a gem that wraps the Zype restful API using httparty as the client. 
@@ -180,4 +179,35 @@ Complete basic navigation and flow for subscriptions
 9. Create the Video model which handles the video requests from the controllers.    
 
     
-
+####Setup Capistrano Deploy
+1. Run `cap install`
+2. Modify `Capfile` in the root directory
+Uncomment:  
+require 'capistrano/rvm'  
+require 'capistrano/bundler'  
+require 'capistrano/rails/migrations'  
+require 'capistrano/rails/assets’  
+Add:  
+require 'capistrano/nginx'  
+require 'capistrano/puma'  
+require 'capistrano/puma/nginx'  
+require 'capistrano/upload-config’  
+Add:  
+the following plugins to the bottom of the Capfile  
+install_plugin Capistrano::Puma  # Default puma tasks  
+workers (in cluster mode)
+install_plugin Capistrano::Puma::Jungle # if you need the jungle tasks  
+install_plugin Capistrano::Puma::Nginx  # if you want to upload a nginx site template  
+3. Modify config/deploy.rb for the app details.
+4. Generate the nginx_puma config files  
+`rails g capistrano:nginx_puma:config`    
+`Running via Spring preloader in process 36719`  
+`      create  config/deploy/templates/puma.rb.erb`  
+`      create  config/deploy/templates/nginx_conf.erb`  
+5. Create the database.production.yml, secrets.production.yml and puma.production.yml config files
+6. Create the nginx config file on the server (/etc/nginx/conf.d/zype-cms_production.conf)
+7. Check the productioncap  config
+`cap production config:check`   
+8. Update 'config/deploy/production.rb' for the server and role
+`server "www.precidix.com", user: "precidix", roles: %w{app db web}`
+`role   :app,  %w{precidix@www.precidix.com}`   

@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  database: zype_cms_dev
+  pool: 5
+  username: precidix
+  password: precidix
+
+development:
+  <<: *default
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: zype_cms_test
+
+production:
+  <<: *default
+  database: zype_cms
