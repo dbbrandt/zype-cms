@@ -210,4 +210,5 @@ install_plugin Capistrano::Puma::Nginx  # if you want to upload a nginx site tem
 `cap production config:check`   
 8. Update 'config/deploy/production.rb' for the server and role
 `server "www.precidix.com", user: "precidix", roles: %w{app db web}`
-`role   :app,  %w{precidix@www.precidix.com}`   
+`role   :app,  %w{precidix@www.precidix.com}`  
+9. Create config/database.yml.example 
