@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use postgres as the database for Active Record
@@ -43,7 +43,7 @@ gem 'fae-rails', '~> 1.5.1'
 
 gem 'zype', :git => 'https://github.com/dbbrandt/zype-cli.git', :branch => 'app-cli'
 
-group :development, :test do                       
+group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
   gem 'pry-byebug'
