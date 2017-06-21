@@ -23,7 +23,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', '0.12.3'
+#gem 'therubyracer', '0.12.3'
 # Used to render markup text fields as HTML
 gem 'redcarpet', '~> 3.4'
 
