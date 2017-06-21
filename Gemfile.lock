@@ -325,7 +325,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   database_cleaner
   factory_girl_rails (~> 4.0)
-  fae-rails (~> 1.5.1)
+  fae-rails (~> 1.5.0)
   faker
   jbuilder (~> 2.5)
   jquery-rails
