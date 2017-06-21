@@ -39,7 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # The Rails CMS
-gem 'fae-rails', '~> 1.5.1'
+gem 'fae-rails', '~> 1.5.0'
 
 gem 'zype', :git => 'https://github.com/dbbrandt/zype-cli.git', :branch => 'app-cli'
 
