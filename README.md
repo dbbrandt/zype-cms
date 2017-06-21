@@ -40,7 +40,6 @@ The main directory being used in the Rails 5 app directory include:
    * sytlesheets 
 * controllers
    * admin (Fae-cms controllers for admin functions)
-   * videos (wrap the zype-cli video endpoints)
    * static_pages (leverage the fae-cms content) 
    	   * index (home page)
    	   * show (detail page)
@@ -59,14 +58,14 @@ The main directory being used in the Rails 5 app directory include:
 
 
 #### Controllers
-The most important controller for this implementation will be the video controller which provides both the index and show (detail) view of a video. The controller will call the Zype service and manage access and subscriptions for the views.
+The most important controller for this implementation will be the static-pages controller which provides both the index and show (detail) view of a video. The controller will call the Zype service and manage access and subscriptions for the views.
 
 #### Fae CMS
 The Fae CMS provides the framework for any administration, user setup and static page content management. In addition to an admin namespace where all the admin models and controllers are placed, we add a static_pages_controller to manage the static  pages and navigation for the Zype-cms.
 
 #### Tools
-1. This app uses Slim templating in palce of the default Erb.
-2. For testing, Rspec is used along with factory-girl, faker and database_cleaner to make it easy!
+1. This app uses Slim templating in place of the default Erb.
+2. For testing, Rspec is used along with factory-girl, faker and database_cleaner to make it easy! Testing is not yet implemented.
 3. Capistrano is added and configured for deploying. 
 
 #### What you need to get started
@@ -124,7 +123,7 @@ end
 
 #### Add in the generated CofeeCup Design Assets
 1. Design the site in Responsive Site Designer by CoffeeCup
-2. Save and Export the site to the *design* folder int he project
+2. Save and Export the site to the *design* folder int the project
 3. Copy the CoffeeCup font files to assets/fonts
     * Add link to google fonts to the laytout/application.html.slim header    `link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Luckiest+Guy%7CMontserrat%7CMouse+Memoirs%7COxygen+Mono"`
 
@@ -176,7 +175,7 @@ Complete basic navigation and flow for subscriptions
 `export HOME=<Rails.root> # replace Rails.root with the actual path`
 6. While testing change to the zype-cli branch without version changes you need to do `bundle update zype` to get the latest changes from the repo.
 7. Create ZypeCli service which encapsulates calls to zype-cli, handles exeptions other details.
-8. Create ZypeModel, a base class for videos and other models generated from zype. The next step would be to conver the zype video records into more useful model objects with appropirate attributes and business methods as funtionality grows.
+8. Create ZypeModel, a base class for videos and other models generated from zype. The next step would be to convert the zype video records into more useful model objects with appropirate attributes and business methods as funtionality grows.
 9. Create the Video model which handles the video requests from the controllers.    
 
     
@@ -207,7 +206,7 @@ install_plugin Capistrano::Puma::Nginx  # if you want to upload a nginx site tem
 `      create  config/deploy/templates/nginx_conf.erb`  
 5. Create the database.production.yml, secrets.production.yml and puma.production.yml config files
 6. Create the nginx config file on the server (/etc/nginx/conf.d/zype-cms_production.conf)
-7. Check the productioncap  config
+7. Check the production cap  config
 `cap production config:check`   
 8. Update 'config/deploy/production.rb' for the server and role
 `server "www.precidix.com", user: "precidix", roles: %w{app db web}`
