@@ -162,17 +162,17 @@ Complete basic navigation and flow for subscriptions
 3. Set the app_key in the environment.
 `export ZYPE_APP_KEY=<your app key`
 4. Create a .zype config file (YAML format) in the rails root directory.
-`---`
-`api_key:`
-`app_key:`
-`client_id:` 
-`client_secret: 
-`host: api.zype.com
-`oauth_host: login.zype.com
-`port: 443
-`use_ssl: true
-5. Set the HOME environment variable to point to the rails root directory.
-`export HOME=<Rails.root> # replace Rails.root with the actual path`
+`---`  
+`api_key:`  
+`app_key:`  
+`client_id:`   
+`client_secret:   
+`host: api.zype.com  
+`oauth_host: login.zype.com  
+`port: 443  
+`use_ssl: true  
+5. Set the HOME environment variable to point to the rails root directory.  
+`export HOME=<Rails.root> # replace Rails.root with the actual path`  
 6. While testing change to the zype-cli branch without version changes you need to do `bundle update zype` to get the latest changes from the repo.
 7. Create ZypeCli service which encapsulates calls to zype-cli, handles exeptions other details.
 8. Create ZypeModel, a base class for videos and other models generated from zype. The next step would be to convert the zype video records into more useful model objects with appropirate attributes and business methods as funtionality grows.
