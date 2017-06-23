@@ -169,7 +169,7 @@ Complete basic navigation and flow for subscriptions
 `client_secret:`   
 `host: api.zype.com`  
 `oauth_host: login.zype.com`  
-`port: 443`
+`port: 443`  
 `use_ssl: true`  
 5. Set the HOME environment variable to point to the rails root directory.  
 `export HOME=<Rails.root> # replace Rails.root with the actual path`  
